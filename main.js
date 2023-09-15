@@ -36,13 +36,13 @@ function route(targetPage) {
   document.title = routes[targetPage].title;
 }
 
-// Initial load
-route(getActivePage());
-
 // route to indexPage if no query is set
 if (getActivePage() == "") {
-  route(indexPage);
+  window.history.pushState(indexPage, "", "./?" + indexPage);
 }
+
+// Initial load
+route(getActivePage());
 
 // listen for changes in url
 window.addEventListener(
