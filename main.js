@@ -9,6 +9,7 @@ function getActivePage() {
 //fetchs and displays active routes/components for the page
 function fetchAndDisplay(routeOrComponent, container) {
   const url = routeOrComponent.path;
+
   fetch(url)
     .then((response) => response.text())
     .then((html) => {
@@ -25,12 +26,14 @@ function fetchAndDisplay(routeOrComponent, container) {
     });
 }
 
-// sets current route to display the corrent page
+// sets current route to display the corrent page and title
 function route(targetPage) {
   const container = document.getElementById("app");
   if (targetPage && routes[targetPage]) {
     fetchAndDisplay(routes[targetPage], container);
   }
+
+  document.title = routes[targetPage].title;
 }
 
 // Initial load
